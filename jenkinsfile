@@ -34,6 +34,13 @@ pipeline {
                sh "curl localhost:9010"
             }
         }
+        stage('Image Push') {
+            steps {
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 324037294487.dkr.ecr.us-east-1.amazonaws.com"
+                sh "docker tag pythonapp:v1 324037294487.dkr.ecr.us-east-1.amazonaws.com/pythonapp:v1"
+                sh "docker push 324037294487.dkr.ecr.us-east-1.amazonaws.com/pythonapp:v1"
+            }
+        }
     }
 
 }
