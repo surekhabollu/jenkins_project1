@@ -9,6 +9,12 @@ pipeline {
             sh "docker-compose --version"
             }
         }
+        stage('Docker-Build') {
+            steps {
+                echo "Docker Build Step here..."
+                sh "docker build . -t pythonapp:v1"
+            }
+        }
     }
 
 }
