@@ -2,8 +2,7 @@ version: '3'
 
 services:
   web:
-    image: stackdemo
-    build: .
+    image: pythonapp:v1
     ports:
       - "9010:8000"
   redis:
