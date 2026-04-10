@@ -15,6 +15,25 @@ pipeline {
                 sh "docker build . -t pythonapp:v1"
             }
         }
+        stage('DockerContainer Creation') {
+            steps {
+                echo "Running Docker Compose here..."
+                sh "docker compose up -d"
+            }
+        }
+
+        stage('Cheking output') {
+            steps {
+                sh "docker ps"
+		        sh "docker compose ps"
+            }
+        }
+
+        stage('app working') {
+            steps {
+               sh "curl localhost:9010"
+            }
+        }
     }
 
 }
